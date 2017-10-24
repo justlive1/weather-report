@@ -1,6 +1,7 @@
     
 server: 
   port: 18101
+  context-path: /weather
 
 weather:
   weatherCityIdUrl: http://wthrcdn.etouch.cn/weather_mini?citykey={citykey}
