@@ -1,0 +1,50 @@
+group 'com.github.justlive1.demo'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    ext {
+        springBootVersion = '1.4.1.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'spring-boot'
+apply plugin: 'java'
+apply plugin: "eclipse"
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+repositories {
+	maven { url "http://maven.aliyun.com/nexus/content/groups/public/"}
+	maven { url "http://repo.spring.io/snapshot"}
+	maven { url "http://repo.spring.io/milestone"}
+}
+
+configurations {
+	all*.exclude group: 'commons-logging'
+}
+
+dependencies {
+	//utils
+	compile 'org.projectlombok:lombok:1.16.6'
+	compile 'com.google.guava:guava:21.0'
+    compile 'com.google.code.gson:gson:2.8.0'
+	
+	//jackson
+	compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.8.3'
+	
+	compile('org.apache.httpcomponents:httpclient:4.5.3')
+	
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.4.1.RELEASE'
+	
+	testCompile("org.springframework.boot:spring-boot-starter-test:1.4.1.RELEASE")
+
+}
+

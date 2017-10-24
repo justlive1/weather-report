@@ -1,0 +1,20 @@
+    
+server: 
+  port: 18101
+
+weather:
+  weatherApiUrl: http://wthrcdn.etouch.cn/weather_mini?citykey={citykey}
+  
+spring:
+  aop:
+    auto: true
+    proxy-target-class: true
+  freemarker:
+    charset: UTF-8
+    check-template-location: true
+    enabled: true
+    prefix:
+    suffix:
+    request-context-attribute: request
+    template-loader-path: classpath:/templates/
+    view-names: '*.ftl'
