@@ -1,6 +1,8 @@
 group 'com.github.justlive1.demo'
 version '1.0-SNAPSHOT'
 
+def springBoot = '1.4.1.RELEASE'
+
 buildscript {
     ext {
         springBootVersion = '1.4.1.RELEASE'
@@ -40,11 +42,11 @@ dependencies {
 	//jackson
 	compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.8.3'
 	
-	compile('org.apache.httpcomponents:httpclient:4.5.3')
+	compile 'org.apache.httpcomponents:httpclient:4.5.3'
 	
-	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.4.1.RELEASE'
-	
-	testCompile("org.springframework.boot:spring-boot-starter-test:1.4.1.RELEASE")
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBoot
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-freemarker', version: springBoot
+	testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBoot
 
 }
 

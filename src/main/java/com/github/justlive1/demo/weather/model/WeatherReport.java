@@ -24,7 +24,7 @@ public class WeatherReport {
 	/**
 	 * 空气指数
 	 */
-	private String api;
+	private String aqi;
 	/**
 	 * 感冒
 	 */
@@ -37,4 +37,22 @@ public class WeatherReport {
 	 * 七日预报
 	 */
 	private List<Weather> forecast;
+
+	/* 解析字段 */
+	/**
+	 * 今日天气
+	 */
+	private Weather today;
+	/**
+	 * 当前月份
+	 */
+	private String month;
+	/**
+	 * 天气图标
+	 */
+	private String icon;
+	/**
+	 * 空气指数描述
+	 */
+	private String aqiDesc;
 }

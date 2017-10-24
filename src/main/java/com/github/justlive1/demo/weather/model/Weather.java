@@ -1,5 +1,8 @@
 package com.github.justlive1.demo.weather.model;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import com.google.gson.annotations.SerializedName;
 
 import lombok.Data;
@@ -40,4 +43,13 @@ public class Weather {
 	 */
 	private String type;
 
+	public String getFlDecode() {
+		if (this.fl != null) {
+			Matcher matcher = Pattern.compile("\\<\\!\\[CDATA\\[(?<text>[^\\]]*)\\]\\]\\>").matcher(fl);
+			if (matcher.matches()) {
+				return matcher.group(1);
+			}
+		}
+		return fl;
+	}
 }

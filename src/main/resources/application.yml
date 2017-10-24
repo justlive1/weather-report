@@ -3,7 +3,10 @@ server:
   port: 18101
 
 weather:
-  weatherApiUrl: http://wthrcdn.etouch.cn/weather_mini?citykey={citykey}
+  weatherCityIdUrl: http://wthrcdn.etouch.cn/weather_mini?citykey={citykey}
+  weatherCityNameUrl: http://wthrcdn.etouch.cn/weather_mini?city={city}
+  cityId: 101190101
+  ipDataPath: /apps/weather/ipdata.datx
   
 spring:
   aop:

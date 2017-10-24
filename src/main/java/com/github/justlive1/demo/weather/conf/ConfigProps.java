@@ -8,5 +8,11 @@ import lombok.Data;
 @Data
 public class ConfigProps {
 
-	private String weatherApiUrl;
+	private String weatherCityIdUrl;
+
+	private String weatherCityNameUrl;
+
+	private String cityId;
+	
+	private String ipDataPath;
 }
