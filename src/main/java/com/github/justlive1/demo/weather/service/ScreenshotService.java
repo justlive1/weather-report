@@ -23,7 +23,7 @@ import org.springframework.stereotype.Service;
 import com.github.justlive1.demo.weather.conf.ConfigProps;
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
-import com.google.common.io.Files;
+import com.google.common.net.UrlEscapers;
 
 /**
  * 快照服务
@@ -54,14 +54,15 @@ public class ScreenshotService {
 	 * @param url
 	 * @return
 	 */
-	public String shot(String url) {
+	public BufferedImage shot(String url) {
 
 		WebDriver webDriver = null;
 		try {
 			DesiredCapabilities desiredCapabilities = DesiredCapabilities.phantomjs();
 			desiredCapabilities.setJavascriptEnabled(true);
 			desiredCapabilities.setBrowserName("phantomjs");
-			desiredCapabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY, props.getPhantomJsPath());
+			desiredCapabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
+					props.getPhantomJsPath());
 			webDriver = new PhantomJSDriver(desiredCapabilities);
 			webDriver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
@@ -69,11 +70,7 @@ public class ScreenshotService {
 			WebDriver augmentedDriver = new Augmenter().augment(webDriver);
 			File screenshot = ((TakesScreenshot) augmentedDriver).getScreenshotAs(OutputType.FILE);
 
-			String path = "/tmp/" + url.hashCode() + ".png";
-			File temp = new File(path);
-			Files.copy(screenshot, temp);
-
-			return path;
+			return ImageIO.read(screenshot);
 
 		} catch (IOException e) {
 			logger.error("", e);
@@ -94,26 +91,16 @@ public class ScreenshotService {
 	 */
 	public BufferedImage shotWeather(String cityName) {
 
-		String url = props.getProjectUrl() + cityName;
+		String url = props.getProjectUrl() + UrlEscapers.urlPathSegmentEscaper().escape(cityName);
 
 		BufferedImage image = cache.getIfPresent(url);
 		if (image != null) {
 			return image;
 		}
 
-		String path = this.shot(url);
-		if (path != null) {
-
-			File input = new File(path);
-			if (input.exists()) {
-
-				try {
-					image = ImageIO.read(input);
-					cache.put(url, image);
-				} catch (IOException e) {
-					logger.error("", e);
-				}
-			}
+		image = this.shot(url);
+		if (image != null) {
+			cache.put(url, image);
 		}
 
 		return image;
