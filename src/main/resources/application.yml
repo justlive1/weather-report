@@ -8,6 +8,9 @@ weather:
   weatherCityNameUrl: http://wthrcdn.etouch.cn/weather_mini?city={city}
   cityId: 101190101
   ipDataPath: /apps/weather/ipdata.datx
+  phantomJsPath: /apps/phantomjs-2.1.1/bin/phantomjs
+  imageExpire: 5
+  projectUrl: http://127.0.0.1:18101/weather/?cityName=
   
 spring:
   aop:

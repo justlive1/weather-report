@@ -35,18 +35,23 @@ configurations {
 
 
 dependencies {
-	//utils
-	compile 'org.projectlombok:lombok:1.16.6'
-	compile 'com.google.guava:guava:21.0'
-    compile 'com.google.code.gson:gson:2.8.0'
 	
-	//jackson
-	compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.8.3'
 	
-	compile 'org.apache.httpcomponents:httpclient:4.5.3'
 	
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBoot
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-freemarker', version: springBoot
 	testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: springBoot
+	
+	//utils
+	compile 'org.projectlombok:lombok:1.16.6'
+	compile 'com.google.guava:guava:21.0'
+	compile 'com.google.code.gson:gson:2.8.0'
+	
+	//jackson
+	compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-xml:2.8.3'
+	compile 'org.apache.httpcomponents:httpclient:4.5.3'
+	
+	compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.0.0'
+
 
 }

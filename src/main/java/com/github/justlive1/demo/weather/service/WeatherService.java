@@ -112,4 +112,5 @@ public class WeatherService {
 		// TODO 天气图标
 
 	}
+	
 }

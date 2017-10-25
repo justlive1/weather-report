@@ -15,4 +15,10 @@ public class ConfigProps {
 	private String cityId;
 	
 	private String ipDataPath;
+	
+	private String phantomJsPath;
+	
+	private Integer imageExpire;
+	
+	private String projectUrl;
 }
