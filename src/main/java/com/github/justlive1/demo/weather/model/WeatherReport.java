@@ -48,10 +48,6 @@ public class WeatherReport {
 	 */
 	private String month;
 	/**
-	 * 天气图标
-	 */
-	private String icon;
-	/**
 	 * 空气指数描述
 	 */
 	private String aqiDesc;

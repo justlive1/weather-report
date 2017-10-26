@@ -13,7 +13,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.github.justlive1.demo.weather.conf.ConfigProps;
+import com.github.justlive1.demo.weather.constant.WeatherType;
 import com.github.justlive1.demo.weather.model.Response;
+import com.github.justlive1.demo.weather.model.Weather;
 import com.github.justlive1.demo.weather.model.WeatherReport;
 import com.google.common.collect.Range;
 import com.google.common.collect.RangeMap;
@@ -97,10 +99,25 @@ public class WeatherService {
 		return null;
 	}
 
+	private void transfer(Weather weather) {
+		String icon = WeatherType.findTypeByDesc(weather.getType());
+		weather.setIcon(icon);
+	}
+
 	private void transfer(WeatherReport report) {
+
+		// 天气图标
+		for (Weather weather : report.getForecast()) {
+			this.transfer(weather);
+		}
+
 		report.setToday(report.getForecast().get(0));
 		report.getForecast().remove(0);
 		report.setMonth(LocalDate.now().getMonth().getValue() + "月");
+
+		if (report.getYesterday() != null) {
+			this.transfer(report.getYesterday());
+		}
 
 		try {
 			int aqi = Integer.parseInt(report.getAqi());
@@ -109,8 +126,6 @@ public class WeatherService {
 		} catch (Exception e) {
 		}
 
-		// TODO 天气图标
-
 	}
-	
+
 }

@@ -42,6 +42,8 @@ public class Weather {
 	 * 天气类型
 	 */
 	private String type;
+	
+	private String icon;
 
 	public String getFlDecode() {
 		if (this.fl != null) {
