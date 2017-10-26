@@ -51,4 +51,8 @@ public class WeatherReport {
 	 * 空气指数描述
 	 */
 	private String aqiDesc;
+	/**
+	 * 时间
+	 */
+	private String time;
 }

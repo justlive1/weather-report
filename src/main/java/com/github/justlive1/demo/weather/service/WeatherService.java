@@ -1,6 +1,8 @@
 package com.github.justlive1.demo.weather.service;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 import javax.annotation.PostConstruct;
 
@@ -126,6 +128,8 @@ public class WeatherService {
 		} catch (Exception e) {
 		}
 
+		String time = LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"));
+		report.setTime(time);
 	}
 
 }

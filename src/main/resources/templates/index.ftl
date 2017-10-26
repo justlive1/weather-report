@@ -33,7 +33,7 @@
 					<a class="op_weather4_twoicon_today" style="left:88px;">
 						<div class="op_weather4_twoicon_split"></div>
 						<p class="op_weather4_twoicon_date">
-							${weather.month!}${weather.today.date!}	&nbsp;&nbsp;${weather.city!}
+							${weather.month!}${weather.today.date!}	${weather.time!} ${weather.city!}
 						</p>
 						<p class="op_weather4_twoicon_date op_weather4_twoicon_pm25">
 							实时空气质量:
