@@ -12,4 +12,4 @@
 ```
 加入以上代码可嵌入到网页中，效果如下
 
-<img src="http://106.14.169.0/weather/image" />
+ ![image](http://106.14.169.0/weather/image)
