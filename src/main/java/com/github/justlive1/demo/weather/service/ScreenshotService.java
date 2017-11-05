@@ -18,6 +18,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import com.github.justlive1.demo.weather.conf.ConfigProps;
@@ -104,5 +105,10 @@ public class ScreenshotService {
 		}
 
 		return image;
+	}
+
+	@Async
+	public void asyncShot(String cityName) {
+		this.shotWeather(cityName);
 	}
 }

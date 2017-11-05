@@ -57,6 +57,8 @@ public class WeatherController {
 				cityName = ipSearch.findCity(ip);
 				if (StringUtils.hasText(cityName)) {
 					weather = weatherService.getWeatherByCityName(cityName);
+					// ip解析时进行后台快照
+					screenshotService.asyncShot(cityName);
 				}
 			}
 		}
