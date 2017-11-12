@@ -61,7 +61,6 @@ public class ScreenshotService {
 		try {
 			DesiredCapabilities desiredCapabilities = DesiredCapabilities.phantomjs();
 			desiredCapabilities.setJavascriptEnabled(true);
-			desiredCapabilities.setBrowserName("phantomjs");
 			desiredCapabilities.setCapability(PhantomJSDriverService.PHANTOMJS_EXECUTABLE_PATH_PROPERTY,
 					props.getPhantomJsPath());
 			webDriver = new PhantomJSDriver(desiredCapabilities);
